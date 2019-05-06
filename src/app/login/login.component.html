@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+  <img width="200" alt="Angular Logo" src="assets/img/robot.png">
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <h3>Sala de Juegos</h3>
+  
+    <mat-form-field>
+      <input matInput placeholder="Enter your username" formControlName="username" required>
+      <mat-error *ngIf="signinForm.get('username').dirty">Invalid Username</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" type="password" formControlName="password" required>
+      <mat-error *ngIf="signinForm.get('password').dirty">Invalid Password</mat-error>
+    </mat-form-field>
+
+    <button  mat-raised-button color="accent" type="submit" [disabled]="!signinForm.valid">SignIn</button>
+
+  </form>
+
+  
+
+</div>
+

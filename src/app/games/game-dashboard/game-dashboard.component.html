@@ -1,0 +1,29 @@
+<mat-grid-list *ngIf="!selectedGame" [cols]="breakpoint" rowHeight="2:0.6" (window:resize)="onResize($event)">
+        <mat-grid-tile 
+            *ngFor="let game of gameList" class="example-card"
+            [colspan]="1"
+            [rowspan]="5"
+        >
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{game.title}}</mat-card-title>            
+                </mat-card-header>
+                <img mat-card-image src="{{game.image}}" alt="{{game.title}}">
+                <mat-card-content>
+                    <p>
+                    {{game.description}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="play(game)">PLAY</button>
+                    <button mat-button>RANKINGS</button>
+                </mat-card-actions>
+            </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<div *ngIf="selectedGame">
+    <button mat-button (click)="back()">BACK</button>
+    <ng-template appDynamicLoader [data]="selectedGame"></ng-template>
+</div>
+
